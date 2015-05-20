@@ -1,0 +1,31 @@
+CTYPE html>
+<html>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<body>
+	<div ng-app="Age" ng-controller="myctrl">
+		<label>DOB:</label>
+		<input type="text" ng-model="dob"><br>
+		Your age is: {{calculateAge()}} years.
+		</div>
+		<script>
+var app = angular.module('Age', []);
+app.controller('myctrl', function($scope) {
+    $scope.calculateAge=function(){
+    	if(!$scope.dob || $scope.dob >new Date())
+    	return "undefined";
+    	if($scope.dob<1890)
+    	return "You are too old";
+    	var dnow=new Date();
+    	var yr=dnow.getUTCFullYear();
+    	return Math.abs(yr-$scope.dob);
+
+    	
+    };
+  
+});
+</script>
+		
+</body>
+</html>
+
+
